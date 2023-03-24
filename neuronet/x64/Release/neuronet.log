@@ -1,0 +1,13 @@
+﻿  NeuralNetwork.cpp
+E:\my_proj\cpp\neuronet\neuronet\NeuralNetwork.cpp(13,19): warning C4244: инициализация: преобразование "Eigen::Index" в "int", возможна потеря данных
+E:\my_proj\cpp\neuronet\neuronet\NeuralNetwork.cpp(89,20): warning C4244: инициализация: преобразование "Eigen::Index" в "int", возможна потеря данных
+E:\my_proj\cpp\neuronet\neuronet\NeuralNetwork.cpp(90,21): warning C4244: инициализация: преобразование "Eigen::Index" в "int", возможна потеря данных
+E:\my_proj\cpp\neuronet\neuronet\NeuralNetwork.cpp(91,21): warning C4244: инициализация: преобразование "Eigen::Index" в "int", возможна потеря данных
+  neuronet.cpp
+E:\my_proj\cpp\neuronet\neuronet\neuronet.cpp(51,29): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+E:\my_proj\cpp\neuronet\neuronet\neuronet.cpp(52,24): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+  Создание кода
+  Previous IPDB not found, fall back to full compilation.
+  All 2949 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  neuronet.vcxproj -> E:\my_proj\cpp\neuronet\x64\Release\neuronet.exe
