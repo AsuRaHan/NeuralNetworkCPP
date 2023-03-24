@@ -1,5 +1,5 @@
 ﻿  main.cpp
-E:\my_proj\cpp\neuronet\neuronet\main.cpp(128,21): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-E:\my_proj\cpp\neuronet\neuronet\main.cpp(186,29): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
-E:\my_proj\cpp\neuronet\neuronet\main.cpp(187,24): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+E:\my_proj\cpp\neuronet\neuronet\NeuralNetwork.h(16,21): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+E:\my_proj\cpp\neuronet\neuronet\main.cpp(68,29): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+E:\my_proj\cpp\neuronet\neuronet\main.cpp(69,24): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
   neuronet.vcxproj -> E:\my_proj\cpp\neuronet\x64\Debug\neuronet.exe
