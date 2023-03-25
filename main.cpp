@@ -22,15 +22,29 @@
 class IrisClassifier {
 public:
     IrisClassifier(const std::string& filename, int num_hidden_neurons)
-        : num_output_neurons(3), learning_rate(0.1)
+        : inputs(), outputs(), training_indices(), num_output_neurons(3), learning_rate(0.1), net({ 4, num_hidden_neurons, num_output_neurons })
     {
         // Load the data from a file
         load_data(filename, inputs, outputs);
-        // Initialize the neural network
-        std::vector<int> layer_sizes = { 4, num_hidden_neurons, num_output_neurons };
-        net = NeuralNetwork(layer_sizes);
-    }
 
+        // Initialize the training indices vector
+        /*for (int i = 0; i < inputs.size(); ++i) {
+            training_indices.push_back(i);
+        }*/
+
+        // Seed the random number generator
+        std::srand(std::time(nullptr));
+
+        // Shuffle the training indices vector
+        std::shuffle(training_indices.begin(), training_indices.end(), std::default_random_engine(std::rand()));
+    }
+    void shuffle_indices(std::vector<int>& indices) {
+        // Seed the random number generator
+        std::srand(std::time(nullptr));
+
+        // Shuffle the indices vector
+        std::shuffle(indices.begin(), indices.end(), std::default_random_engine(std::rand()));
+    }
     void load_data(std::string filename, std::vector<std::vector<double>>& inputs, std::vector<std::vector<double>>& outputs) {
         std::ifstream file(filename);
         if (!file) {
@@ -38,6 +52,7 @@ public:
         }
 
         std::string line;
+        int wIter = 0;
         while (std::getline(file, line)) {
             if (line.empty()) {
                 continue;
@@ -78,17 +93,28 @@ public:
 
             inputs.push_back(input_row);
             outputs.push_back(output_row);
+            training_indices.push_back(wIter);
+            wIter++;
         }
 
         file.close();
     }
 
     void train(int num_epochs) {
-        // Shuffle the data
-        std::shuffle(training_indices.begin(), training_indices.end(),
-            std::default_random_engine(std::chrono::system_clock::now().time_since_epoch().count()));
+        shuffle_indices(training_indices);
 
         // Train the neural network
+        //for (int epoch = 1; epoch <= num_epochs; ++epoch) {
+        //    for (const auto& i : training_indices) {
+        //        net.backpropagate(inputs[i], outputs[i]);
+        //    }
+        //}
+        // 
+        //// Shuffle the data
+        //std::shuffle(training_indices.begin(), training_indices.end(),
+        //    std::default_random_engine(std::chrono::system_clock::now().time_since_epoch().count()));
+
+        //// Train the neural network
         for (int epoch = 1; epoch <= num_epochs; ++epoch) {
             double total_error = 0.0;
             for (int i : training_indices) {
@@ -117,7 +143,7 @@ public:
 private:
     std::vector<std::vector<double>> inputs;
     std::vector<std::vector<double>> outputs;
-    std::vector<int> training_indices = { 0, 1, 2,3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149 };
+    std::vector<int> training_indices;
     int num_output_neurons;
     double learning_rate;
     NeuralNetwork net;
