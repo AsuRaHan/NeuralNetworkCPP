@@ -8,8 +8,8 @@ public:
     NeuralNetwork() = default;
     std::vector<double> feedforward(const std::vector<double>& inputs);
     void backpropagate(std::vector<double> input, std::vector<double> target);
-
     void backpropagate(const std::vector<double>& error, double learning_rate);
+
 private:
     std::vector<Layer> layers;
 
