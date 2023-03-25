@@ -1,6 +1,12 @@
 #include "Neuron.h"
 
-Neuron::Neuron(int num_inputs) : weights(num_inputs), bias(random_weight()), output_(0.0), error_gradient_(0.0), inputs_(num_inputs) {
+Neuron::Neuron(int num_inputs) : 
+    weights(num_inputs), 
+    bias(random_weight()), 
+    output_(0.0), 
+    error_gradient_(0.0), 
+    inputs_(num_inputs) {
+    num_inputs_ = num_inputs;
     for (auto& weight : weights) {
         weight = random_weight();
     }

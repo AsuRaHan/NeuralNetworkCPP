@@ -22,7 +22,7 @@
 class IrisClassifier {
 public:
     IrisClassifier(const std::string& filename, int num_hidden_neurons)
-        : inputs(), outputs(), training_indices(), num_output_neurons(3), learning_rate(0.1), net({ 4, num_hidden_neurons, num_output_neurons })
+        : inputs(), outputs(), training_indices(), num_output_neurons(3), learning_rate(0.1), net({ 4, num_hidden_neurons, num_output_neurons },0.1)
     {
         // Load the data from a file
         load_data(filename, inputs, outputs);
@@ -103,29 +103,23 @@ public:
     void train(int num_epochs) {
         shuffle_indices(training_indices);
 
+        // Shuffle the data
+        //std::shuffle(training_indices.begin(), training_indices.end(),std::default_random_engine(std::chrono::system_clock::now().time_since_epoch().count()));
+        
         // Train the neural network
-        //for (int epoch = 1; epoch <= num_epochs; ++epoch) {
-        //    for (const auto& i : training_indices) {
-        //        net.backpropagate(inputs[i], outputs[i]);
-        //    }
-        //}
-        // 
-        //// Shuffle the data
-        //std::shuffle(training_indices.begin(), training_indices.end(),
-        //    std::default_random_engine(std::chrono::system_clock::now().time_since_epoch().count()));
-
-        //// Train the neural network
         for (int epoch = 1; epoch <= num_epochs; ++epoch) {
             double total_error = 0.0;
-            for (int i : training_indices) {
+            for (const auto& i : training_indices) {
                 std::vector<double> predicted = net.feedforward(inputs[i]);
                 std::vector<double> error(outputs[i].size());
                 std::transform(outputs[i].begin(), outputs[i].end(), predicted.begin(), error.begin(), std::minus<double>());
-                net.backpropagate(error, learning_rate);
+                net.backpropagate(inputs[i], outputs[i]);
                 total_error += std::inner_product(error.begin(), error.end(), error.begin(), 0.0);
             }
             std::cout << "Epoch " << epoch << " error: " << total_error << std::endl;
         }
+
+        net.save_model("models.txt");
     }
 
     std::string classify(double sepal_length, double sepal_width, double petal_length, double petal_width) {

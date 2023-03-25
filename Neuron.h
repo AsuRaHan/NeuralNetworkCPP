@@ -20,10 +20,13 @@ public:
 
 private:
     std::vector<double> weights;
+    std::vector<double> inputs_;
+
     double bias;
     double output_;
     double error_gradient_;
-    std::vector<double> inputs_;
+    
+    int num_inputs_;
 
     static double random_weight();
 
