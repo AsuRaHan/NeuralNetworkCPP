@@ -24,7 +24,7 @@
     <ClCompile Include="Layer.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="NeuralNetwork.cpp">
+    <ClCompile Include="NeuralNetworkold.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,7 +35,7 @@
     <ClInclude Include="Layer.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="NeuralNetwork.h">
+    <ClInclude Include="NeuralNetworkold.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

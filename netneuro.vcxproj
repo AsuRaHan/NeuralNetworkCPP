@@ -131,12 +131,12 @@
   <ItemGroup>
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="NeuralNetwork.cpp" />
+    <ClCompile Include="NeuralNetworkold.cpp" />
     <ClCompile Include="Neuron.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Layer.h" />
-    <ClInclude Include="NeuralNetwork.h" />
+    <ClInclude Include="NeuralNetworkold.h" />
     <ClInclude Include="Neuron.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
